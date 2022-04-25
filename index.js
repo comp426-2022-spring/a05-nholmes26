@@ -8,6 +8,9 @@ const db = require("./src/services/database.js")
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Serve static HTML files
+app.use(express.static('./public'));
+
 // Require minimist, set up port with default of 5000
 const args = require('minimist')(process.argv.slice(2))
 args['port']
