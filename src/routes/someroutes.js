@@ -1,5 +1,14 @@
 // Route (endpoint) definitions go in this directory
-app.get('/app/flip/', (req, res) => { // Flip a coin and return the result
+// Add cors dependency
+const cors = require('cors')
+// Set up cors middleware on all endpoints
+app.use(cors())
+const routes = express.Router();
+
+// Get coin functions
+app.use(require('./src/controllers/mycontrollers.js'))
+
+routes.route('/app/flip/').get(function (req, res, next) { // Flip a coin and return the result
     // Respond with status 200
     res.statusCode = 200;
     // Flip a coin using the coinFlip() function
@@ -13,7 +22,7 @@ app.get('/app/flip/', (req, res) => { // Flip a coin and return the result
     } 
 });
 
-app.get('/app/flips/:number', (req, res) => { // Flip a coin multiple times and return the results
+routes.route('/app/flips/:number').get(function (req, res, next) { // Flip a coin multiple times and return the results
     // Respond with status 200
     res.statusCode = 200;
     // Set up variable for number of coin flips, array of results, and counted results
@@ -25,16 +34,18 @@ app.get('/app/flips/:number', (req, res) => { // Flip a coin multiple times and 
     // send json response of results
 });
 
-app.get('/app/flip/call/heads', (req, res) => { // Flip a coin, call heads, compare result
+routes.route('/app/flip/call/heads').get(function (req, res, next) {  // Flip a coin, call heads, compare result
     // Respond with status 200
     res.statusCode = 200;
        // Use flipACoin function, send json response of results
     res.json(flipACoin('heads'));
 });
 
-app.get('/app/flip/call/tails', (req, res) => { // Flip a coin, call heads, compare result
+routes.route('/app/flip/call/tails').get(function (req, res, next) {  // Flip a coin, call heads, compare result
     // Respond with status 200
     res.statusCode = 200;
     // Use flipACoin function, send json response of results
     res.json(flipACoin('tails'));
 });
+
+module.exports = routes;
