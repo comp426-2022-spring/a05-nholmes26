@@ -32,17 +32,49 @@
       <button id="multinav">Flip multiple coins</button>
       <button id="guessnav">Guess the result</button>
     </nav>
-    <div id="home">
-      
+    <div id="home" class ="active">
+      <h1>Welcome to some simple coin flipping simulators!</h1>
     </div>    
     <div id="single" class="hidden">
-      
+      <h1>Flip a Coin</h1>
+      <button id="coin" onclick="flipCoin()">Flip Once</button>
     </div>
     <div id="multi" class="hidden">
-      
+      <h1>Flip Multiple Coins</h1>
+      <div id="table" class="hidden">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Heads or Tails</th>
+              <th scope="col">Count</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Heads</td>
+            </tr>
+            <tr>
+              <td>Tails</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Outcome</th>
+              <th scope="col">Image</th>
+            </tr>
+          </thead>
+        </table>
     </div>
     <div id="guess" class="hidden">
-      
+      <h1>Guess Heads or Tails</h1>
+      <button id="heads" onclick="guessFlip('heads')">Heads</button>
+      <button id="tails" onclick="guessFlip('tails')">Tails</button>
+      <h2>Outcome:</h2>
+      <h2>Result:</h2>
     </div>
 	<script src="main.js"></script>
   </body>
