@@ -1,6 +1,6 @@
 // Place your server entry point code here
 // Require express
-var express = require('express')
+var express = require('express');
 var app = express()
 
 // Express to use built-in body parsernp
@@ -43,15 +43,15 @@ const server = app.listen(port, () => {
 app.use(require('./src/middleware/mymiddleware.js'))
 
 // Get functions
-app.use = require('./src/routes/someroutes.js')
+app.use(require('./src/routes/someroutes.js'))
 
 app.get('/app/', (req, res) => { // Define Checkpoint
     // Respond with status 200
     res.statusCode = 200;
     // Respond with status message "OK"
-    res.statusMessage = 'OK';
+    res.statusMessage = 'Your API works!';
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-    res.end(res.statusCode+ ' ' +res.statusMessage)
+    res.end(res.statusMessage)
 });
 
 if (args['log'] == true) {
