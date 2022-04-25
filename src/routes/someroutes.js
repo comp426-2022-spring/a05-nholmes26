@@ -40,24 +40,15 @@ someroutes.route('/app/flip/call/heads').get(function (req, res, next) {  // Fli
     // Respond with status 200
     res.statusCode = 200;
     // Use flipACoin function, send json response of results
-    const result = coins.flipACoin(req.params.guess)
+    const result = coins.flipACoin("heads")
     res.json(result);
 });
 
-someroutes.route('/app/flip/call/tails').get(function (req, res, next) {  // Flip a coin, call heads, compare result
+someroutes.route('/app/flip/call/tails').get(function (req, res, next) {  // Flip a coin, call tails, compare result
     // Respond with status 200
     res.statusCode = 200;
     // Use flipACoin function, send json response of results
-    const result = coins.flipACoin(req.params.guess)
+    const result = coins.flipACoin("tails")
     res.json(result);
 });
-
-someroutes.route('/app/flip/call/').post(function (req, res, next) {
-    // Respond with status 200
-    res.statusCode = 200;
-    // Use flipACoin function, send json response of results
-    const result = coins.flipACoin(req.body.guess)
-    res.json(result);
-})
-
 module.exports = someroutes;

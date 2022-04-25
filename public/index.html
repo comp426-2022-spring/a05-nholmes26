@@ -42,54 +42,30 @@
       <h1>Flip a Coin</h1>
       <button id="coin" onclick="flipCoin()">Flip Once</button>
       <p>Outcome: <span id="outcome"></span></p>
-      <img src="assets/img/coin.png" id="image" class="bigcoin">
+      <img src="assets/img/coin.png" id="image" class="smallcoin">
     </div>
 
     <div id="multi" class="hidden">
       <h1>Flip Multiple Coins</h1>
-      <form action="javascript:void(0);" method="post" onsubmit="flipCoins()">
-				<label for="number">Enter number of coins:</label>
-				<input type="number" name="number" id="number">
-				<input type="submit" value="Flip">
-      </form>
-      <div id="table" class="hidden">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Heads or Tails</th>
-              <th scope="col">Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Heads</td>
-              <td><span id="totalHeads"></span></td>
-            </tr>
-            <tr>
-              <td>Tails</td>
-              <td><span id="totalTails"></span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Outcome</th>
-              <th scope="col">Image</th>
-            </tr>
-          </thead>
-          <tbody id="data">
-          </tbody>
-        </table>
+			<form action="javascript:void(0);" method="POST">
+				<label for="count">
+					<p>Enter Coin Count:</p>
+				</label>
+				<input type="number" name="count" id="count">
+				<input type="submit" value="Flip Coins" onclick="flipCoins()">
+			</form>
+			<p><b>Outcome:</b></p>
+        <p>Heads Count: <span id="heads"></span></p>
+				<p>Tails Count: <span id="tails"></span></p>
+        <p id="coindisplay"></p>
     </div>
 
     <div id="guess" class="hidden">
       <h1>Heads or Tails?</h1>
-      <button id="heads" onclick="guessFlip('heads')">Heads</button>
-      <button id="tails" onclick="guessFlip('tails')">Tails</button>
+      <button id="heads" onclick="guessHeads()">Heads</button>
+      <button id="tails" onclick="guessTails()">Tails</button>
       <h2>Outcome:</h2>
-      <img src="assets/img/coin.png" id="outcome">
+      <img src="assets/img/coin.png" id="outcome" class="smallcoin">
       <h2>Result:</h2>
       <p><span id="result"></span></p>
     </div>
