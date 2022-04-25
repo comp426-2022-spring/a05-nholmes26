@@ -1,7 +1,7 @@
 // Middleware function definitions go here
 
-// Require database and md5
-const db = require("./src/services/database.js")
+// Require database
+const db = require('./src/services/database.js')
 
 //Middleware
 function middleware(req, res, next) {

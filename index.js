@@ -17,7 +17,7 @@ const port = args['port'] || process.env.PORT || 5000
 
 // set up help menu
 if (args['help']) {
-    console.log(`server.js [options]
+    console.log(`index.js [options]
 
     --port, -p	Set the port number for the server to listen on. Must be an integer
     between 1 and 65535. Defaults to 5000.
@@ -31,11 +31,8 @@ if (args['help']) {
     Logs are always written to database.
 
     --help, -h	Return this message and exit.`)
-    exit(EXIT_SUCCESS)
+    process.exit(0)
 }
-
-// Import necessary coin functions
-const coinfuncs = require("./modules/coin.js");
 
 // Start an app server
 const server = app.listen(port, () => { 
