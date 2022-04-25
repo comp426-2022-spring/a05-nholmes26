@@ -2,8 +2,7 @@
 // Require express
 var express = require('express')
 var app = express()
-// Require database and md5
-const db = require("./src/services/database.js")
+
 // Express to use built-in body parsernp
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,6 +14,7 @@ app.use(express.static('./public'));
 const args = require('minimist')(process.argv.slice(2))
 args['port']
 const port = args['port'] || process.env.PORT || 5000
+
 // set up help menu
 if (args['help']) {
     console.log(`server.js [options]
@@ -41,6 +41,9 @@ const coinfuncs = require("./modules/coin.js");
 const server = app.listen(port, () => { 
     console.log('App listening on port %PORT%'.replace('%PORT%',port))
 });
+
+// Get middleware
+app.use(require('./src/middleware/mymiddleware.js'))
 
 app.get('/app/', (req, res) => { // Define Checkpoint
     // Respond with status 200
@@ -99,30 +102,6 @@ if (args['log'] == true) {
     // Set up the access logging middleware
     app.use(morgan('accesslog', { stream: WRITESTREAM }));
 }
-
-//Middleware
-app.use( (req, res, next) => {
-    let logdata = {
-        remoteaddr: req.ip,
-        remoteuser: req.user,
-        time: Date.now(),
-        method: req.method,
-        url: req.url,
-        protocol: req.protocol,
-        httpversion: req.httpVersion,
-        secure: req.secure,
-        status: res.statusCode,
-        referer: req.headers['referer'],
-        useragent: req.headers['user-agent']
-    }
-    const stmt = db.prepare(`INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
-    
-    const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time,
-            logdata.method, logdata.url, logdata.protocol,
-            logdata.httpversion, logdata.status,
-            logdata.referer, logdata.useragent)
-    next();
-})
 
 if (args['debug'] == true) {
     // Endpoint to return all records in accesslog
