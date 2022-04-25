@@ -1,14 +1,19 @@
 // Route (endpoint) definitions go in this directory
+var express = require('express')
+var app = express()
+app.use(express.json());
+
 // Add cors dependency
 const cors = require('cors')
 // Set up cors middleware on all endpoints
 app.use(cors())
-const routes = express.Router();
+// Set up cors middleware on all endpoints
+const routing = express.Router();
 
 // Get coin functions
-app.use(require('./src/controllers/mycontrollers.js'))
+app.use(require('/Users/nathanholmes/github-classroom/comp426-2022-spring/a05-nholmes26/src/controllers/mycontrollers.js'))
 
-routes.route('/app/flip/').get(function (req, res, next) { // Flip a coin and return the result
+routing.route('/app/flip/').get(function (req, res, next) { // Flip a coin and return the result
     // Respond with status 200
     res.statusCode = 200;
     // Flip a coin using the coinFlip() function
@@ -22,7 +27,7 @@ routes.route('/app/flip/').get(function (req, res, next) { // Flip a coin and re
     } 
 });
 
-routes.route('/app/flips/:number').get(function (req, res, next) { // Flip a coin multiple times and return the results
+routing.route('/app/flips/:number').get(function (req, res, next) { // Flip a coin multiple times and return the results
     // Respond with status 200
     res.statusCode = 200;
     // Set up variable for number of coin flips, array of results, and counted results
@@ -34,18 +39,18 @@ routes.route('/app/flips/:number').get(function (req, res, next) { // Flip a coi
     // send json response of results
 });
 
-routes.route('/app/flip/call/heads').get(function (req, res, next) {  // Flip a coin, call heads, compare result
+routing.route('/app/flip/call/heads').get(function (req, res, next) {  // Flip a coin, call heads, compare result
     // Respond with status 200
     res.statusCode = 200;
        // Use flipACoin function, send json response of results
     res.json(flipACoin('heads'));
 });
 
-routes.route('/app/flip/call/tails').get(function (req, res, next) {  // Flip a coin, call heads, compare result
+routing.route('/app/flip/call/tails').get(function (req, res, next) {  // Flip a coin, call heads, compare result
     // Respond with status 200
     res.statusCode = 200;
     // Use flipACoin function, send json response of results
     res.json(flipACoin('tails'));
 });
 
-module.exports = routes;
+module.exports = routing;

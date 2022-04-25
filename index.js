@@ -43,7 +43,7 @@ const server = app.listen(port, () => {
 app.use(require('./src/middleware/mymiddleware.js'))
 
 // Get functions
-app.use(require('./src/routes/someroutes.js'))
+app.use = require('./src/routes/someroutes.js')
 
 app.get('/app/', (req, res) => { // Define Checkpoint
     // Respond with status 200

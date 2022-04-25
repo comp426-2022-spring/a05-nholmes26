@@ -1,7 +1,7 @@
 // Middleware function definitions go here
 
 // Require database
-const db = require('./src/services/database.js')
+const db = require('/Users/nathanholmes/github-classroom/comp426-2022-spring/a05-nholmes26/src/services/database.js')
 
 //Middleware
 function middleware(req, res, next) {
