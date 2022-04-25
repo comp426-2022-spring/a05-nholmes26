@@ -1,5 +1,4 @@
 // Middleware function definitions go here
-
 // Require database
 const db = require('/Users/nathanholmes/github-classroom/comp426-2022-spring/a05-nholmes26/src/services/database.js')
 
@@ -26,5 +25,4 @@ function middleware(req, res, next) {
             logdata.referer, logdata.useragent)
     next();
 }
-
 module.exports = middleware
