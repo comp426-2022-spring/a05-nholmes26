@@ -1,1 +1,1 @@
-// Configuration goes here
+// Configuration would go here
