@@ -49,9 +49,9 @@ app.get('/app/', (req, res) => { // Define Checkpoint
     // Respond with status 200
     res.statusCode = 200;
     // Respond with status message "OK"
-    res.statusMessage = 'Your API works!';
-    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-    res.end(res.statusMessage)
+    res.json({
+        'message': "Your API works! (200)"
+    })
 });
 
 if (args['log'] == true) {
