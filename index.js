@@ -1,19 +1,18 @@
 // Place your server entry point code here
-// Require express
-var express = require('express');
-var app = express()
-
-// Express to use built-in body parsernp
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// Serve static HTML files
-app.use(express.static('./public'));
-
 // Require minimist, set up port with default of 5000
 const args = require('minimist')(process.argv.slice(2))
 args['port']
 const port = args['port'] || process.env.PORT || 5000
+// Require express
+var express = require('express');
+var app = express()
+
+// Serve static HTML files
+app.use(express.static('./public'));
+
+// Express to use built-in body parsernp
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // set up help menu
 if (args['help']) {

@@ -5,7 +5,7 @@ const express = require('express')
 const someroutes = require("express").Router();
 
 // Get coin functions
-const coins = require('/Users/nathanholmes/github-classroom/comp426-2022-spring/a05-nholmes26/src/controllers/mycontrollers.js')
+const coins = require('../controllers/mycontrollers.js')
 
 someroutes.route('/app/flip/').get(function (req, res, next) { // Flip a coin and return the result
     // Respond with status 200
