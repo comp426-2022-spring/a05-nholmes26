@@ -74,13 +74,7 @@
         tails_c++;
       }
     }
-    if (heads_c == 0) {
-      return {tails: tails_c};
-    } else if (tails_c == 0) {
-      return {heads: heads_c};
-    } else {
-      return {heads: heads_c, tails: tails_c};
-    }
+    return {heads: heads_c, tails: tails_c};
   }
   
   /** Flip a coin!

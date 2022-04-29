@@ -41,7 +41,6 @@ function flipCoin() {
 // Enter number and press button to activate coin flip series
 function flipCoins() {
     var count = document.getElementById("count").value;
-
     fetch('http://localhost:5000/app/flips/coins', {
         body: JSON.stringify({"number": count}),
         headers: {"Content-Type": "application/json",},
@@ -54,22 +53,17 @@ function flipCoins() {
             console.log(result);
             document.getElementById("heads").innerHTML = result.summary.heads;
             document.getElementById("tails").innerHTML = result.summary.tails;
-            
             var coindisplay = document.getElementById("coindisplay");
             var data = document.createElement("table");
             var row = data.insertRow();
             var i = 0;
             while(i < result.raw.length){
-                for(var j = 0; j < 5; j++){
-                    if(i < result.raw.length){
-                        var cell = row.insertCell();
-                        var image = document.createElement('img');
-                        image.setAttribute("src", "/assets/img/"+result.raw[i]+".png");
-                        image.setAttribute("class", "smallcoin");
-                        cell.appendChild(image); 
-                        i++;
-                    }
-                }
+                var cell = row.insertCell();
+                var image = document.createElement('img');
+                image.setAttribute("src", "/assets/img/"+result.raw[i]+".png");
+                image.setAttribute("class", "smallcoin");
+                cell.appendChild(image); 
+                i++;
             }
             coindisplay.appendChild(data);
         })
@@ -83,7 +77,7 @@ function guessTails() {
         })
         .then((result) => {
             console.log(result);
-            document.getElementById("outcome").setAttribute("src", "/assets/img/" + result.flip + ".png");
+            document.getElementById("image2").setAttribute("src", "assets/img/" + result.flip + ".png");
             document.getElementById("result").innerHTML = "You " + result.result;
         })
 }
@@ -95,7 +89,7 @@ function guessHeads() {
         })
         .then((result) => {
             console.log(result);
-            document.getElementById("outcome").setAttribute("src", "/assets/img/" + result.flip + ".png");
+            document.getElementById("image2").setAttribute("src", "assets/img/" + result.flip + ".png");
             document.getElementById("result").innerHTML = "You " + result.result;
         })
 }
