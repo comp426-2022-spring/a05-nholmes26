@@ -24,6 +24,7 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+
   </head>
   <body>
     <nav>
@@ -32,17 +33,41 @@
       <button id="multinav">Flip multiple coins</button>
       <button id="guessnav">Guess the result</button>
     </nav>
-    <div id="home">
-      
-    </div>    
+
+    <div id="home" class ="active">
+      <h1>Welcome to some simple coin flipping simulators!</h1>
+    </div>  
+
     <div id="single" class="hidden">
-      
+      <h1>Flip a Coin</h1>
+      <button id="coin" onclick="flipCoin()">Flip Once</button>
+      <p>Outcome: <span id="outcome"></span></p>
+      <img src="assets/img/coin.png" id="image" class="smallcoin">
     </div>
+
     <div id="multi" class="hidden">
-      
+      <h1>Flip Multiple Coins</h1>
+			<form action="javascript:void(0);" method="POST">
+				<label for="count">
+					<p>Enter Coin Count:</p>
+				</label>
+				<input type="number" name="count" id="count">
+				<input type="submit" value="Flip Coins" onclick="flipCoins()">
+			</form>
+			<p><b>Outcome:</b></p>
+        <p>Heads Count: <span id="heads"></span></p>
+				<p>Tails Count: <span id="tails"></span></p>
+        <p id="coindisplay"></p>
     </div>
+
     <div id="guess" class="hidden">
-      
+      <h1>Heads or Tails?</h1>
+      <button id="heads" onclick="guessHeads()">Heads</button>
+      <button id="tails" onclick="guessTails()">Tails</button>
+      <h2>Outcome:</h2>
+      <img src="assets/img/coin.png" id="image2" class="smallcoin">
+      <h2>Result:</h2>
+      <p><span id="result"></span></p>
     </div>
 	<script src="main.js"></script>
   </body>
